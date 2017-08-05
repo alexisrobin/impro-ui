@@ -5,9 +5,12 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
+import { ChronometerComponent} from './chronometer/chronometer.component'
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ChronometerComponent
   ],
   imports: [
     BrowserModule,
