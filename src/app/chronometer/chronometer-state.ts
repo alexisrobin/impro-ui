@@ -1,5 +1,6 @@
 export enum ChronometerState {
     Init,
     Play,
-    Stop
+    Stop,
+    End
 }

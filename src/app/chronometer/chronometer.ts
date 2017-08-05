@@ -2,18 +2,28 @@ import { ChronometerState } from './chronometer-state';
 
 export class Chronometer
 {
-  private totalSecondes: number = 0;
+  private totalBaseSeconds: number = 30;
+  private totalSeconds: number;
   private timer;
 
-  minutes: number = 0;
-  secondes: number = 0;
-  state: ChronometerState = ChronometerState.Init;
+  minutes: number;
+  seconds: number;
+  state: ChronometerState;
+
+  constructor(){
+    this.init();
+  }
 
   play() {
     this.state = ChronometerState.Play;
     this.timer = setInterval(() => {
-      this.minutes = Math.floor(++this.totalSecondes / 60);
-      this.secondes = this.totalSecondes - this.minutes * 60;
+      if(this.totalSeconds > 0) {
+        this.minutes = Math.floor(--this.totalSeconds / 60);
+        this.seconds = this.totalSeconds - this.minutes * 60;
+      } else {
+        this.state = ChronometerState.End;
+        clearInterval(this.timer);
+      }
     }, 1000);
   }
 
@@ -24,8 +34,16 @@ export class Chronometer
 
   init() {
     this.state = ChronometerState.Init;
-    this.totalSecondes = this.minutes = this.secondes = 0;
+    this.totalSeconds = this.totalBaseSeconds;
+    this.minutes = Math.floor(this.totalSeconds / 60);
+    this.seconds = this.totalSeconds - this.minutes * 60;
     clearInterval(this.timer);
+  }
+
+  getTime(): string {
+    return (this.minutes < 10 ? "0" + this.minutes : this.minutes)
+      + ' : '
+      + (this.seconds < 10 ? "0" + this.seconds : this.seconds);
   }
 
 }
