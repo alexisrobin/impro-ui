@@ -1,4 +1,4 @@
-export enum ChronometerState {
+export enum TimerState {
     Init,
     Play,
     Stop,

@@ -1,0 +1,8 @@
+<input type="time" [(ngModel)]="timerInit"/>
+<button class="btn btn-danger btn-lg" (click)="init()">Init</button>
+<br/>
+<span class="label label-primary">{{ timer.totalSeconds | timer }}</span>
+<p>
+    <button class="btn btn-danger btn-lg" *ngIf="timer.state == timerState.Play" (click)="stop()">Arrêter</button>
+    <button class="btn btn-primary btn-lg" *ngIf="timer.state != timerState.Play" (click)="play()">{{btnPlay}}</button>
+</p>
