@@ -4,25 +4,32 @@ import { TimerState } from './timer-state';
 
 @Component({
     selector: 'timer',
-    templateUrl: '/timer.component.html'
+    templateUrl: 'timer.component.html',
+    styleUrls: ['timer.component.scss']
 })
 export class TimerComponent {
-    private btnPlay: string = 'Démarrer';
     private timer: Timer = new Timer();
     private timerState = TimerState;
     private timerInit;
+    private initializingTime: boolean = false;
 
     play() {
         this.timer.play()
-        this.btnPlay = 'Continuer';
     }
+
     stop() {
         this.timer.stop();
     }
+
     init() {
         let timerInit = this.timerInit.split(':');
         this.timer.setInitSeconds(+timerInit[0]*60 + +timerInit[1]);
         this.timer.init();
-        this.btnPlay = 'Démarrer';
+        this.initializingTime = false;
     }
+
+    initializeTime() {
+        this.initializingTime = true;
+    }
+
 }

@@ -1,8 +1,25 @@
-<input type="time" [(ngModel)]="timerInit"/>
+<!-- <md-input-container>
+    <input type="time" mdInput [(ngModel)]="timerInit">
+</md-input-container>
 <button class="btn btn-danger btn-lg" (click)="init()">Init</button>
+<br/> -->
+<span id="init-time">{{timer.initSeconds | timer}}</span>
 <br/>
-<span class="label label-primary">{{ timer.totalSeconds | timer }}</span>
-<p>
-    <button class="btn btn-danger btn-lg" *ngIf="timer.state == timerState.Play" (click)="stop()">Arrêter</button>
-    <button class="btn btn-primary btn-lg" *ngIf="timer.state != timerState.Play" (click)="play()">{{btnPlay}}</button>
-</p>
+<div id="main-timer">
+    <button md-button (click)="initializeTime()" *ngIf="!initializingTime; else timeInitializer">
+        <span id="current-time">{{ timer.totalSeconds | timer }}</span>
+    </button>
+    <ng-template #timeInitializer>
+        <md-input-container>
+            <input type="time" mdInput [(ngModel)]="timerInit">
+        </md-input-container>
+    </ng-template>
+</div>
+<br/>
+<div id="fab-timer">
+    <button md-fab>
+        <md-icon *ngIf="initializingTime" (click)="init()">check</md-icon>
+        <md-icon *ngIf="timer.state != timerState.Play && !initializingTime" (click)="play()">play_arrow</md-icon>
+        <md-icon *ngIf="timer.state == timerState.Play && !initializingTime" (click)="stop()">stop</md-icon>
+    </button>
+</div>

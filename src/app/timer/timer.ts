@@ -2,8 +2,8 @@ import { TimerState } from './timer-state';
 
 export class Timer
 {
-  private initSeconds: number = 30;
   private timer;
+  initSeconds: number = 30;
   totalSeconds: number;
   
   state: TimerState;
