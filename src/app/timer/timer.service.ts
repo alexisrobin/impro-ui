@@ -1,10 +1,14 @@
-import { TimerState } from './timer-state';
+import { Injectable } from '@angular/core';
 
-export class Timer
+import { TimerState } from './timer-state';
+import { BehaviorSubject } from "rxjs/Rx";
+
+@Injectable()
+export class TimerService
 {
   private timer;
   initSeconds: number = 30;
-  totalSeconds: number;
+  current: BehaviorSubject<number> = new BehaviorSubject(this.initSeconds);
   
   state: TimerState;
 
@@ -15,8 +19,8 @@ export class Timer
   play() {
     this.state = TimerState.Play;
     this.timer = setInterval(() => {
-      if(this.totalSeconds > 0) {
-        --this.totalSeconds;
+      if( this.current.value > 0) {
+        this.current.next(this.current.value - 1);
       } else {
         this.state = TimerState.End;
         clearInterval(this.timer);
@@ -31,12 +35,11 @@ export class Timer
 
   init() {
     this.state = TimerState.Init;
-    this.totalSeconds = this.initSeconds;
+    this.current.next(this.initSeconds);
     clearInterval(this.timer);
   }
 
   setInitSeconds(initSeconds: number) {
       this.initSeconds = initSeconds;
   }
-
 }

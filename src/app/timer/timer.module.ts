@@ -7,6 +7,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { TimerComponent } from './timer.component';
 import { TimerPipe } from './timer.pipe';
+import { TimerService } from './timer.service';
 
 @NgModule({
     declarations: [
@@ -23,6 +24,9 @@ import { TimerPipe } from './timer.pipe';
     ],
     exports: [
         TimerComponent
+    ],
+    providers: [
+        TimerService
     ]
 })
 export class TimerModule { }

@@ -1,25 +1,13 @@
-<!-- <md-input-container>
-    <input type="time" mdInput [(ngModel)]="timerInit">
-</md-input-container>
-<button class="btn btn-danger btn-lg" (click)="init()">Init</button>
-<br/> -->
 <span id="init-time">{{timer.initSeconds | timer}}</span>
-<br/>
-<div id="main-timer">
-    <button md-button (click)="initializeTime()" *ngIf="!initializingTime; else timeInitializer">
-        <span id="current-time">{{ timer.totalSeconds | timer }}</span>
-    </button>
-    <ng-template #timeInitializer>
-        <md-input-container>
-            <input type="time" mdInput [(ngModel)]="timerInit">
-        </md-input-container>
-    </ng-template>
+<div id="timer">
+    <md-input-container (click)="onInitTime()">
+       <input type="time" mdInput [(ngModel)]="time">
+    </md-input-container>
 </div>
-<br/>
 <div id="fab-timer">
     <button md-fab>
-        <md-icon *ngIf="initializingTime" (click)="init()">check</md-icon>
-        <md-icon *ngIf="timer.state != timerState.Play && !initializingTime" (click)="play()">play_arrow</md-icon>
-        <md-icon *ngIf="timer.state == timerState.Play && !initializingTime" (click)="stop()">stop</md-icon>
+        <md-icon *ngIf="isInitializingTime" (click)="init()">check</md-icon>
+        <md-icon *ngIf="timer.state != timerState.Play && !isInitializingTime" (click)="play()">play_arrow</md-icon>
+        <md-icon *ngIf="timer.state == timerState.Play && !isInitializingTime" (click)="stop()">stop</md-icon>
     </button>
 </div>
