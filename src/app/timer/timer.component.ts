@@ -3,10 +3,33 @@ import { TimerService } from './timer.service';
 import { TimerState } from './timer-state';
 import { TimerPipe } from './timer.pipe';
 
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+  group
+} from '@angular/animations';
+
 @Component({
     selector: 'timer',
     templateUrl: 'timer.component.html',
-    styleUrls: ['timer.component.scss']
+    styleUrls: ['timer.component.scss'],
+    animations: [
+        trigger('buttonAnim', [
+            transition(':enter', [
+                style({transform: 'translateX(-100%)'}),
+                animate('0.2s 100ms ease-in')
+            ]),
+            transition(':leave', [
+                 animate('0.2s 0.1s ease-out', style({
+                    opacity: 0,
+                    transform: 'translateX(100%)'
+                }))
+            ])
+        ])
+    ]
 })
 export class TimerComponent {
     private timerPipe: TimerPipe = new TimerPipe();

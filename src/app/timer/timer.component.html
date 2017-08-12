@@ -6,8 +6,8 @@
 </div>
 <div id="fab-timer">
     <button md-fab>
-        <md-icon *ngIf="isInitializingTime" (click)="init()">check</md-icon>
-        <md-icon *ngIf="timer.state != timerState.Play && !isInitializingTime" (click)="play()">play_arrow</md-icon>
-        <md-icon *ngIf="timer.state == timerState.Play && !isInitializingTime" (click)="stop()">stop</md-icon>
+        <md-icon [@buttonAnim] *ngIf="isInitializingTime" (click)="init()">check</md-icon>
+        <md-icon [@buttonAnim] *ngIf="timer.state != timerState.Play && !isInitializingTime" (click)="play()">play_arrow</md-icon>
+        <md-icon [@buttonAnim] *ngIf="timer.state == timerState.Play && !isInitializingTime" (click)="stop()">stop</md-icon>
     </button>
 </div>
