@@ -3,9 +3,14 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { TimerModule} from './timer/timer.module'
+import { AngularFireModule } from 'angularfire2';
+
+import { TimerModule } from './timer/timer.module'
+import { ThemeModule } from './theme/theme.module'
 
 import { AppComponent } from './app.component';
+
+import { environment, firebaseConfig } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -15,7 +20,9 @@ import { AppComponent } from './app.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    TimerModule
+    AngularFireModule.initializeApp(firebaseConfig),
+    TimerModule,
+    ThemeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

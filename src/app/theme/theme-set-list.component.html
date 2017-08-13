@@ -1,0 +1,6 @@
+<md-list>
+  <md-list-item *ngFor="let set of sets | async">
+    <md-icon md-list-icon>folder</md-icon>
+    <h4 md-line>{{set.name}}</h4>
+  </md-list-item>
+</md-list>
