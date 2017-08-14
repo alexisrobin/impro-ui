@@ -1,0 +1,13 @@
+<div class="container flex">
+  <md-input-container class="example-full-width">
+      <input class="text-center" mdInput #themeInput type="text">
+  </md-input-container>
+  <br/>
+  <button md-raised-button (click)="addTheme()">Add</button>
+  <br/>
+  <md-list id="theme-list">
+    <md-list-item class="text-center" *ngFor="let theme of themes | async">
+      <h4 md-line>{{theme.$value}}</h4>
+    </md-list-item>
+  </md-list> 
+</div>
