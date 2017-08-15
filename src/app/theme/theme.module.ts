@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
-import {MdButtonModule, MdInputModule, MdIconModule} from '@angular/material';
+import {MdButtonModule, MdInputModule, MdIconModule, MdCardModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { ThemeSetListComponent } from './theme-set-list.component';
@@ -25,6 +25,7 @@ import { ThemeRoutingModule } from './theme-routing.module';
         MdButtonModule,
         MdIconModule,
         MdInputModule,
+        MdCardModule,
         ThemeRoutingModule
     ],
     exports: [

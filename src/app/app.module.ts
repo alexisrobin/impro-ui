@@ -6,8 +6,10 @@ import { HttpModule } from '@angular/http';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
-import { TimerModule } from './timer/timer.module'
-import { ThemeModule } from './theme/theme.module'
+import { TimerModule } from './timer/timer.module';
+import { ThemeModule } from './theme/theme.module';
+
+import { NavBarModule } from './navbar/navbar.module';
 
 import { AppComponent } from './app.component';
 
@@ -24,7 +26,8 @@ import { environment, firebaseConfig } from '../environments/environment';
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     TimerModule,
-    ThemeModule
+    ThemeModule,
+    NavBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
